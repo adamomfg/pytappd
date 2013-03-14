@@ -1,0 +1,8 @@
+setup.py
+pytappd.egg-info/PKG-INFO
+pytappd.egg-info/SOURCES.txt
+pytappd.egg-info/dependency_links.txt
+pytappd.egg-info/not-zip-safe
+pytappd.egg-info/top_level.txt
+untappd/__init__.py
+untappd/untappd.py

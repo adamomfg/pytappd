@@ -1,4 +1,5 @@
-pytappd
-=======
+## Pytappd
 
-Python wrapper for Untappd
+An Untappd API wrapper in Python
+--------------------------------
+
