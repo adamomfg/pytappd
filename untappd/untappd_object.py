@@ -10,6 +10,7 @@ NotSet = _NotSetType()
 class BasicUntappdObject(object):
 
     def __init__(self, attributes):
+        self._init_attributes()
         self._setup_attributes(attributes)
 
 

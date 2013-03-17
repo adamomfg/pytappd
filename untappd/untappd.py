@@ -32,7 +32,7 @@ class Untappd(object):
     def get_beers(self):
 
         beers = []
-        for beer in self.get_feed('dstegelman'):
+        for beer in self.get_feed(''):
             beers.append(self.get_beer(beer['beer']['bid']))
         return beers
 
