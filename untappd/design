@@ -1,3 +1,6 @@
+Make a base class for entities, which all untappd objects will inherit from
+  * What methods or attributes do all untappd objects share?
+
 Make an object for all types of entities
   * users
   * beers
