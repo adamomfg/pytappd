@@ -14,6 +14,7 @@ class Untappd(object):
 
         self.client_id = client_id
         self.client_secret = client_secret
+        self.method = 'get'
 
         if self.client_id is None:
             raise APIKeyException('Client ID is required.')
@@ -21,7 +22,8 @@ class Untappd(object):
             raise APIKeyException('Client secret is required.')
 
     def __append_key(self):
-        return '?client_id=%s&client_secret=%s' % (self.client_id, self.client_secret)
+        return '?client_id=%s&client_secret=%s' % (
+            self.client_id, self.client_secret)
 
     def __pre_call(self, url):
         return "%s%s%s" % (UNTAPPD_ENDPOINT, url, self.__append_key())
@@ -96,6 +98,3 @@ class Untappd(object):
         /brewery/checkins/BREWERY_ID
         """
         pass
-
-
-
