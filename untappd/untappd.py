@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#TODO: use httplib2 in favor of requests
 import requests
 
 UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
@@ -20,6 +22,7 @@ class Untappd(object):
     if self.client_secret is None:
         raise APIKeyException('Client secret is required.')
 
+  #TODO: clean up the internal methods for making calls to the API
   def __append_key(self):
     return '?client_id=%s&client_secret=%s' % (
         self.client_id, self.client_secret)
