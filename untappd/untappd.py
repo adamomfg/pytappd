@@ -1,4 +1,3 @@
-
 import requests
 
 UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
@@ -22,8 +21,8 @@ class Untappd(object):
         raise APIKeyException('Client secret is required.')
 
   def __append_key(self):
-      return '?client_id=%s&client_secret=%s' % (
-          self.client_id, self.client_secret)
+    return '?client_id=%s&client_secret=%s' % (
+        self.client_id, self.client_secret)
 
   def __pre_call(self, url):
       return "%s%s%s" % (UNTAPPD_ENDPOINT, url, self.__append_key())
@@ -31,13 +30,13 @@ class Untappd(object):
   def __call(self, url):
     return requests.get(self.__pre_call(url)).json()
 
-  def get_beers(self):
+  def GetBeers(self):
     beers = []
     for beer in self.get_feed(''):
       beers.append(self.get_beer(beer['beer']['bid']))
     return beers
 
-  def search_beers(self, query):
+  def SearchBeers(self, query):
     """/search/beer"""
     feed_url = '/search/beer/?q=%s' % query
     beers = []
@@ -47,37 +46,38 @@ class Untappd(object):
 
     return beers
 
-  def search_breweries(self):
+  def SearchBreweries(self):
     raise NotImplementedError
 
+    #TODO(fix this to work)
     def get_beer(self, beer_id):
       """/beer/info/"""
       feed_url = '/beer/info/%s' % beer_id
       return Beer(self.__call(feed_url)['response']['beer'])
 
-  def get_brewery(self, brewery_id):
+  def GetBrewery(self, brewery_id):
     """/brewery/info/"""
     feed_url = '/brewery/info/%s' % brewery_id
     return Brewery(self.__call(feed_url)['response']['brewery'])
 
 
-  def get_feed(self, username):
+  def GetFeed(self, username):
     """user/checkins/USERNAME"""
     FEED_URL = '/user/checkins/%s' % username
     return self.__call(FEED_URL)['response']['checkins']['items']
 
-  def get_pub_feed(self):
+  def GetPubFeed(self):
     """/thepub"""
     pass
 
-  def get_venue_feed(self):
+  def GetVenueVeed(self):
     """/venue/checkins/VENUE_ID"""
     pass
 
-  def get_beer_checkins(self):
+  def GetBeerCheckins(self):
     """/beer/checkins/BID"""
     pass
 
-  def get_brewery_checkins(self):
+  def GetBreweryCheckins(self):
     """/brewery/checkins/BREWERY_ID"""
     pass
