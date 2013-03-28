@@ -1,0 +1,17 @@
+Make an object for all types of entities
+  * users
+  * beers
+  * breweries
+  * checkins
+  * venues
+  * badges
+  * comments
+  * enumerate here
+
+Make methods for objects that require them
+  * Beer checkin
+  * Venue checkin
+  * Beer addition to wish list
+  * Friend requests
+  * Check in comments
+  * enumerate here
