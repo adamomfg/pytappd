@@ -9,7 +9,8 @@ Make an object for all types of entities
   * venues
   * badges
   * comments
-  * enumerate here
+  * friends
+  * notifications
 
 Make methods for objects that require them
   * Beer checkin
@@ -18,3 +19,37 @@ Make methods for objects that require them
   * Friend requests
   * Check in comments
   * enumerate here
+
+API Documentation index from https://untappd.com/api/docs/v4:
+Friend Feed
+User Feed
+The Pub Feed
+The Pub Feed (Local)
+Venue Feed
+Beer Feed
+Brewery Checkins
+Brewery Info
+Beer Info
+Venue Info
+Checkin Info
+User Info
+User Badges
+User Friends
+User Wish List
+User Distinct Beers
+Brewery Search
+Beer Search
+Trending
+Checkin
+Add Comment
+Remove Comment
+Toast / Remove Toast
+Add To Wish List
+Remove from Wish List
+Pending Friends
+Accept Friends
+Reject Friends
+Remove Friends
+Request Friends
+Notifications
+Foursquare Venue Lookup
