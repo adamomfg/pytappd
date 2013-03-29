@@ -4,12 +4,9 @@ import untappd_object
 
 class Beer(untappd_object.UntappdObject):
 
-    @property
-    def id(self):
-        """
-        :type: string
-        """
-        return self._id
+  def __init__(self, id=None, name=None, label=None, abv):
+    self.id = id
+    self.name = name
 
     @property
     def name(self):
@@ -48,21 +45,3 @@ class Beer(untappd_object.UntappdObject):
 
     def brewery(self):
         pass
-
-    def _init_attributes(self):
-        self._name = untappd_object.NotSet
-        self._abv = untappd_object.NotSet
-        self._label = untappd_object.NotSet
-        self._description = untappd_object.NotSet
-        self._style = untappd_object.NotSet
-        self._id = untappd_object.NotSet
-
-    def _setup_attributes(self, attributes):
-        self._name = attributes['beer_name']
-        self._abv = attributes['beer_abv']
-        if 'beer_style' in attributes:
-            self._style = attributes['beer_style']
-        if 'beer_description' in attributes:
-            self._description = attributes['beer_description']
-        if 'beer_label' in attributes:
-            self._label = attributes['beer_label']
