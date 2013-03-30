@@ -4,9 +4,12 @@ import requests
 
 UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
 
-from exceptions import APIKeyException
 from beer import Beer
 from brewery import Brewery
+
+
+class APIKeyException(Exception):
+  pass
 
 
 class Untappd(object):
