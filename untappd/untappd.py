@@ -36,41 +36,31 @@ class Untappd(object):
   def __call(self, url):
     return requests.get(self.__pre_call(url)).json()
 
-  def GetBeers(self):
-    beers = []
-    for beer in self.get_feed(''):
-      beers.append(self.get_beer(beer['beer']['bid']))
-    return beers
-
   def SearchBeers(self, query):
     """/search/beer"""
     feed_url = '/search/beer/?q=%s' % query
     beers = []
-    print(self.__call(feed_url)['response']['beers']['items'])
-    for beer in self.__call(feed_url)['response']['beers']['items']:
-      beers.append(self.get_beer(beer['bid']))
+    #TODO fix this to work
+    print(self.__call(feed_url)['response']['beers'])
 
     return beers
 
   def SearchBreweries(self):
     raise NotImplementedError
 
-    #TODO(fix this to work)
-    def get_beer(self, beer_id):
-      """/beer/info/"""
-      feed_url = '/beer/info/%s' % beer_id
-      return Beer(self.__call(feed_url)['response']['beer'])
-
   def GetBrewery(self, brewery_id):
     """/brewery/info/"""
     feed_url = '/brewery/info/%s' % brewery_id
     return Brewery(self.__call(feed_url)['response']['brewery'])
 
-
-  def GetFeed(self, username):
+  def GetUserFeed(self, username):
     """user/checkins/USERNAME"""
     FEED_URL = '/user/checkins/%s' % username
     return self.__call(FEED_URL)['response']['checkins']['items']
+
+  def GetPubFeed(self, pub):
+    feed_url = 'thepub'
+    return self.__call(FEED_URL)['response']
 
   def GetPubFeed(self):
     """/thepub"""
