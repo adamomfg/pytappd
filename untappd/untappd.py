@@ -40,7 +40,7 @@ class Untappd(object):
     """/search/beer"""
     feed_url = '/search/beer/?q=%s' % query
     beers = []
-    #TODO fix this to work
+    #TODO fix this to work, put in beers.py
     print(self.__call(feed_url)['response']['beers'])
 
     return beers

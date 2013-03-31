@@ -17,5 +17,8 @@ class User(untappd_object.UntappdObject):
     self.bio = bio
     self.relationship = relationship
     self.account_type = account_type
-    
+    self.contact = contact
+    self.is_supporter = is_supporter
+    self.facebook = facebook
+    self.foursquare = foursquare
     
