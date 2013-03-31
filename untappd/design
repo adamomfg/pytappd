@@ -6,6 +6,19 @@ Make an object for all types of entities
   * beers
   * breweries
   * checkins
+    * checkin_comment
+    * media
+    * created_at
+    * venue
+    * checkin_id
+    * comments
+    * source
+    * beer
+    * user
+    * rating_score
+    * toasts
+    * brewery
+    * badges
   * venues
   * badges
   * comments
