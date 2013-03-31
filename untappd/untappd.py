@@ -55,6 +55,7 @@ class Untappd(object):
 
   def GetUserFeed(self, username):
     """user/checkins/USERNAME"""
+    #TODO Have this method return a list of Checkin objects
     FEED_URL = '/user/checkins/%s' % username
     return self.__call(FEED_URL)['response']['checkins']['items']
 
