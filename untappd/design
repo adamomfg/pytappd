@@ -3,7 +3,7 @@ Make a base class for entities, which all untappd objects will inherit from
 
 Make an object for all types of entities
   * users
-{u'bio': u'', u'first_name': u'adam', u'last_name': u'', u'user_avatar': u'https://untappd.s3.amazonaws.com/profile/0d5c954c52559c5e896b08ea21c1690b_thumb.jpeg', u'uid': 8172, u'relationship': None, u'url': u'', u'contact': {u'twitter': u'adampsyche', u'foursquare': 27359, u'facebook': 780426752}, u'location': u'', u'is_supporter': 1, u'user_name': u'adampsyche', u'is_private': 0}
+    DONE
   * beers
   * breweries
   * checkins
