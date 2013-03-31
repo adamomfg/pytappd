@@ -5,7 +5,9 @@ class User(untappd_object.UntappdObject):
   
   def __init__(self, user_name=None, first_name=None, last_name=None,
                user_avatar=None, is_private=None, location=None, url=None,
-               bio=None, relationship=None, account_type=None):
+               bio=None, relationship=None, account_type=None, 
+               contact = None, is_supporter=None, facebook=None,
+               twitter=None, foursquare=None, uid=None):
     
     self.user_name = user_name
     self.first_name = first_name
@@ -20,5 +22,6 @@ class User(untappd_object.UntappdObject):
     self.contact = contact
     self.is_supporter = is_supporter
     self.facebook = facebook
+    self.twitter = twitter
     self.foursquare = foursquare
-    
+    self.uid = uid

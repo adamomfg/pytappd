@@ -39,33 +39,30 @@ class Untappd(object):
   def SearchBeers(self, query):
     """/search/beer"""
     feed_url = '/search/beer/?q=%s' % query
-    beers = []
-    #TODO fix this to work, put in beers.py
-    print(self.__call(feed_url)['response']['beers'])
-
-    return beers
+    return self.__call(feed_url)['response']
 
   def SearchBreweries(self):
     raise NotImplementedError
 
   def GetBrewery(self, brewery_id):
-    """/brewery/info/"""
     feed_url = '/brewery/info/%s' % brewery_id
     return Brewery(self.__call(feed_url)['response']['brewery'])
 
   def GetUserFeed(self, username):
-    """user/checkins/USERNAME"""
-    #TODO Have this method return a list of Checkin objects
-    FEED_URL = '/user/checkins/%s' % username
-    return self.__call(FEED_URL)['response']['checkins']['items']
+    feed_url = '/user/checkins/%s' % username
+    return self.__call(feed_url)['response']['checkins']['items']
+    
+  def GetUserInfo(self, username):
+    feed_url = '/user/info/%s' % username
+    return self.__call(feed_url)['response']['user']
+    
+  def GetUserBadges(self, username):
+    feed_url = '/user/badges/%s' % username
+    return self.__call(feed_url)['response']
 
   def GetPubFeed(self, pub):
-    feed_url = 'thepub'
+    feed_url = 'pub'
     return self.__call(FEED_URL)['response']
-
-  def GetPubFeed(self):
-    """/thepub"""
-    pass
 
   def GetVenueVeed(self):
     """/venue/checkins/VENUE_ID"""
