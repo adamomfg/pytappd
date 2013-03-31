@@ -52,8 +52,13 @@ class Untappd(object):
     feed_url = '/user/checkins/%s' % username
     return self.__call(feed_url)['response']['checkins']['items']
     
+  def GetUserDistinctBeers(self, username):
+    feed_url = '/user/beers/%s' % username
+    return self.__call(feed_url)['response']['items']
+    
   def GetUserInfo(self, username):
     feed_url = '/user/info/%s' % username
+    #TODO take this dictionary and create a user.User object
     return self.__call(feed_url)['response']['user']
     
   def GetUserBadges(self, username):
