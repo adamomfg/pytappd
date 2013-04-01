@@ -1,14 +1,9 @@
-import untappd_object
-
-
-class User(untappd_object.UntappdObject):
+class User(object):
   
-  def __init__(self, user_name=None, first_name=None, last_name=None,
-               user_avatar=None, is_private=None, location=None, url=None,
-               bio=None, relationship=None, account_type=None, 
-               contact = None, is_supporter=None, facebook=None,
-               twitter=None, foursquare=None, uid=None):
-    
+  def __init__(self, data):
+  
+    self.__dict__.update(data)          
+    """
     self.user_name = user_name
     self.first_name = first_name
     self.last_name = last_name
@@ -25,3 +20,4 @@ class User(untappd_object.UntappdObject):
     self.twitter = twitter
     self.foursquare = foursquare
     self.uid = uid
+    """

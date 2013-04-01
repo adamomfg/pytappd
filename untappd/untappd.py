@@ -2,11 +2,9 @@
 #TODO: use httplib2 in favor of requests
 import requests
 
-UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
+import user
 
-from beer import Beer
-from brewery import Brewery
-from users import Users
+UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
 
 
 class APIKeyException(Exception):
@@ -59,8 +57,8 @@ class Untappd(object):
     
   def GetUserInfo(self, username):
     feed_url = '/user/info/%s' % username
-    #TODO take this dictionary and create a user.User object
-    return self.__call(feed_url)['response']['user']
+    raw_data = self.__call(feed_url)['response']['user']
+    return user.User(raw_data)
     
   def GetUserBadges(self, username):
     feed_url = '/user/badges/%s' % username
