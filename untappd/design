@@ -1,5 +1,5 @@
 Make a base class for entities, which all untappd objects will inherit from
-  * If we initialize untappd.Untappd for all 
+  * If we initialize untappd.Untappd for all, can that init the connection object?
   * What methods or attributes do all untappd objects share?
 
 Make an object for all types of entities
