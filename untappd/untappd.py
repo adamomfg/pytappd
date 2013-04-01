@@ -24,7 +24,6 @@ class Untappd(object):
     if self.client_secret is None:
         raise APIKeyException('Client secret is required.')
 
-  #TODO: clean up the internal methods for making calls to the API
   def __append_key(self):
     return '?client_id=%s&client_secret=%s' % (
         self.client_id, self.client_secret)
@@ -53,12 +52,11 @@ class Untappd(object):
     
   def GetUserDistinctBeers(self, username):
     feed_url = '/user/beers/%s' % username
-    return self.__call(feed_url)['response']['items']
+    return self.__call(feed_url)['response']['beers']
     
-  def GetUserInfo(self, username):
+  def GetUser(self, username):
     feed_url = '/user/info/%s' % username
-    raw_data = self.__call(feed_url)['response']['user']
-    return user.User(raw_data)
+    return self.__call(feed_url)['response']['user']
     
   def GetUserBadges(self, username):
     feed_url = '/user/badges/%s' % username
