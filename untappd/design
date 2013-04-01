@@ -1,9 +1,10 @@
 Make a base class for entities, which all untappd objects will inherit from
+  * If we initialize untappd.Untappd for all 
   * What methods or attributes do all untappd objects share?
 
 Make an object for all types of entities
   * users
-    DONE
+      create instantiation objects on users; in untappd, make the right call to users?
   * beers
   * breweries
   * checkins

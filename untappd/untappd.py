@@ -6,6 +6,7 @@ UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
 
 from beer import Beer
 from brewery import Brewery
+from users import Users
 
 
 class APIKeyException(Exception):
