@@ -49,19 +49,27 @@ class Untappd(object):
   def GetUserFeed(self, username):
     feed_url = '/user/checkins/%s' % username
     return self.__call(feed_url)['response']['checkins']['items']
-    
-  def GetUserDistinctBeers(self, username):
-    feed_url = '/user/beers/%s' % username
-    return self.__call(feed_url)['response']['beers']
-    
-  def GetUser(self, username):
+
+  def GetUserInfo(self, username):
     feed_url = '/user/info/%s' % username
     return self.__call(feed_url)['response']['user']
-    
+  
   def GetUserBadges(self, username):
     feed_url = '/user/badges/%s' % username
     return self.__call(feed_url)['response']
 
+  def GetUserFriends(self, username):
+	feed_url = '/user/friends/%s' % username
+	return self.__call(feed_url)['response']
+	
+  def GetUserWishList(self, username):
+	feed_url = '/user/wishlist/%s' % username
+	return self.__call(feed_url)['response']
+    
+  def GetUserDistinctBeers(self, username):
+    feed_url = '/user/beers/%s' % username
+    return self.__call(feed_url)['response']
+    
   def GetPubFeed(self, pub):
     feed_url = 'pub'
     return self.__call(FEED_URL)['response']
