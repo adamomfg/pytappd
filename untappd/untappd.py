@@ -2,8 +2,6 @@
 #TODO: use httplib2 in favor of requests
 import requests
 
-import user
-
 UNTAPPD_ENDPOINT = 'http://api.untappd.com/v4'
 
 
@@ -11,28 +9,28 @@ class APIKeyException(Exception):
   pass
 
 
-class Untappd(object):
+class Api(object):
 
-  def __init__(self, client_id=None, client_secret=None):
+  #TODO(api): make sure that all calls have feed_url specified along with 
+  # client_id and client_secret
+  def __init__(self, client_id='C6D476FF7E034C2F10EB9A9F6975B93B1B82044B', 
+               client_secret='E23D250D26BD3237A75C05FF57D5DE93727D8A38'):
 
     self.client_id = client_id
     self.client_secret = client_secret
     self.method = 'get'
 
     if self.client_id is None:
-        raise APIKeyException('Client ID is required.')
+      raise APIKeyException('Client ID is required.')
     if self.client_secret is None:
-        raise APIKeyException('Client secret is required.')
+      raise APIKeyException('Client secret is required.')
 
-  def __append_key(self):
-    return '?client_id=%s&client_secret=%s' % (
-        self.client_id, self.client_secret)
+    self.key = '?client_id=%s&client_secret=%s' % (
+              self.client_id, self.client_secret)
+    self.pre_call = '%s%s' % (UNTAPPD_ENDPOINT, self.key)
 
-  def __pre_call(self, url):
-      return "%s%s%s" % (UNTAPPD_ENDPOINT, url, self.__append_key())
-
-  def __call(self, url):
-    return requests.get(self.__pre_call(url)).json()
+  def Call(self, call):
+    return requests.get(self.pre_call).json()
 
   def SearchBeers(self, query):
     """/search/beer"""
@@ -49,10 +47,6 @@ class Untappd(object):
   def GetUserFeed(self, username):
     feed_url = '/user/checkins/%s' % username
     return self.__call(feed_url)['response']['checkins']['items']
-
-  def GetUserInfo(self, username):
-    feed_url = '/user/info/%s' % username
-    return self.__call(feed_url)['response']['user']
   
   def GetUserBadges(self, username):
     feed_url = '/user/badges/%s' % username
