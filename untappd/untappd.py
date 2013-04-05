@@ -11,7 +11,7 @@ class APIKeyException(Exception):
   pass
 
 
-class Untappd(object):
+class Api(object):
 
   def __init__(self, client_id=None, client_secret=None):
 
