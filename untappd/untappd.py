@@ -12,8 +12,7 @@ class APIKeyException(Exception):
 
 class Api(object):
 
-  def __init__(self, client_id='C6D476FF7E034C2F10EB9A9F6975B93B1B82044B', 
-               client_secret='E23D250D26BD3237A75C05FF57D5DE93727D8A38'):
+  def __init__(self, client_id=None, client_secret=None):
 
     self.client_id = client_id
     self.client_secret = client_secret
@@ -24,15 +23,13 @@ class Api(object):
     if self.client_secret is None:
       raise APIKeyException('Client secret is required.')
 
-    self.key = '/client_id=%s&client_secret=%s' % (
+    self.key = '?client_id=%s&client_secret=%s' % (
               self.client_id, self.client_secret)
-    self.pre_call = '%s%s' % (UNTAPPD_ENDPOINT, self.key)
 
   # figure out a neat way to insert the endpoint, the call, and the key
   def Call(self, call, key):
-    # this now has to return three things, figure out where to put the third
-    # return requests.get(self.pre_call + call).json()
-    return requests.get(UNTAPPD_ENDPOINT + self.call + self.key).json()
+    print UNTAPPD_ENDPOINT + call + self.key
+    return requests.get(UNTAPPD_ENDPOINT + call + self.key).json()
 
   def SearchBeers(self, query):
     """/search/beer"""
