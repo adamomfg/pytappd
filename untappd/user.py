@@ -11,4 +11,4 @@ class User(object):
 
   def GetUserInfo(self, username):
     feed_url = '/user/info/%s' % username
-    return untappd.Api.Call(self.api, feed_url)
+    return untappd.Api.Call(self.api, self.key, feed_url)
