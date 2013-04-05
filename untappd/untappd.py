@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 #TODO: use httplib2 in favor of requests
 import requests
 
@@ -18,7 +19,7 @@ class Api(object):
 
     self.client_id = client_id
     self.client_secret = client_secret
-    self.method = 'get'
+    self.method = '/get'
 
     if self.client_id is None:
       raise APIKeyException('Client ID is required.')
@@ -30,7 +31,8 @@ class Api(object):
     self.pre_call = '%s%s' % (UNTAPPD_ENDPOINT, self.key)
 
   def Call(self, call):
-    return requests.get(self.pre_call).json()
+    print self.pre_call + call
+    return requests.get(self.pre_call + call).json()
 
   def SearchBeers(self, query):
     """/search/beer"""

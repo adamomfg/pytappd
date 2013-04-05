@@ -9,6 +9,6 @@ class User(object):
     if self.api is None:
       raise Exception('untappd.api is required.')
 
-  def GetUserInfo(self, api, username):
+  def GetUserInfo(self, username):
     feed_url = '/user/info/%s' % username
-    return untappd.Api(feed_url)['response']['user']
+    return untappd.Api.Call(self.api, feed_url)
