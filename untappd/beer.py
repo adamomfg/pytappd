@@ -1,7 +1,6 @@
-import untappd_object
+import untappd
 
-
-class Beer(untappd_object.UntappdObject):
+class Beer(object):
 
   def __init__(self, beer_id=None, name=None, label=None, abv=None, style=None,
                description=None, brewery=None):

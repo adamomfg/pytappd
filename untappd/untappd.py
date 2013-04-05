@@ -28,7 +28,6 @@ class Api(object):
 
   # figure out a neat way to insert the endpoint, the call, and the key
   def Call(self, call, key):
-    print UNTAPPD_ENDPOINT + call + self.key
     return requests.get(UNTAPPD_ENDPOINT + call + self.key).json()
 
   def SearchBeers(self, query):
