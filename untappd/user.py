@@ -20,7 +20,7 @@ class User(object):
     for k, v in response_dict['response']['user'].iteritems():
       setattr(self, k, v)
 
-  def GetUserBadges(self, badges):
+  def GetUserBadges(self, username):
     call = '/user/badges/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.key)
     self.badges = response_dict['response']['items']
