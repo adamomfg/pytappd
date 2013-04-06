@@ -24,3 +24,6 @@ class User(object):
     call = '/user/badges/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.key)
     self.badges = response_dict['response']['items']
+
+  def GetUserFriends(self, username):
+    call = '/user/friends/%s' % username
