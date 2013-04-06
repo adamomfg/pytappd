@@ -7,7 +7,7 @@ class User(object):
                url=None, checkins=None, settings=None, media=None, contact=None,
                date_joined=None, location=None, account_type=None,
                is_supporter=None, recent_brews=None, user_name=None, id=None,
-               is_private=None, stats=None):
+               is_private=None, stats=None, badges=None):
   
     self.api = untappd.Api()
     
@@ -19,3 +19,8 @@ class User(object):
     response_dict = untappd.Api.Call(self.api, call, self.api.key)
     for k, v in response_dict['response']['user'].iteritems():
       setattr(self, k, v)
+
+  def GetUserBadges(self, badges):
+    call = '/user/badges/%s' % username
+    response_dict = untappd.Api.Call(self.api, call, self.api.key)
+    self.badges = response_dict['response']['items']

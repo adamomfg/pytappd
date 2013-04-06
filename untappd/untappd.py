@@ -26,7 +26,6 @@ class Api(object):
     self.key = '?client_id=%s&client_secret=%s' % (
               self.client_id, self.client_secret)
 
-  # figure out a neat way to insert the endpoint, the call, and the key
   def Call(self, call, key):
     return requests.get(UNTAPPD_ENDPOINT + call + self.key).json()
 
