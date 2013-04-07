@@ -1,6 +1,12 @@
 import untappd
 
 class User(object):
+
+  """An Untappd user object.
+
+  Creates a user object, with no attributes. Call any method to populate the 
+  object with attributes, with a username and an api key.
+  """
   
   def __init__(self, api=None, bio=None, first_name=None, last_name=None,
                user_avatar=None, uid=None, relationship=None, untappd_url=None,
