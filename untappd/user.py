@@ -28,9 +28,14 @@ class User(object):
   def GetUserFriends(self, username):
     call = '/user/friends/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.key)
-    self.friends = response_dict['items']
+    self.friends = response_dict['response']['items']
     
   def GetUserFriends(self, username):
     call = '/user/wishlist/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.key)
-    self.friends = response_dict['items']
+    self.friends = response_dict['response']['items']
+    
+  def GetDistinctBeers(self, username):
+    call - '/user/beers/%s' % username
+    response_dict = untappd.Api.Call(self.api, call, self.api.key)
+    self.distinct = response_dict['response']['items']
