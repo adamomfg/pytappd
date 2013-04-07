@@ -42,6 +42,12 @@ class User(object):
     self.friends = response_dict['response']['items']
     
   def GetDistinctBeers(self, username):
-    call - '/user/beers/%s' % username
+    call = '/user/beers/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.key)
     self.distinct = response_dict['response']['items']
+
+  def GetUserFeed(self, username, limit=None, offset=None):
+    call = '/user/checkins/%s' % username
+    response_dict = untappd.Api.Call(self.api, call, self.api.key)
+    print response_dict
+    #self.feed = response_dict['response']['checkins']['items']

@@ -12,7 +12,8 @@ class APIKeyException(Exception):
 
 class Api(object):
 
-  def __init__(self, client_id=None, client_secret=None):
+  def __init__(self, client_id=None,
+               client_secret=None):
 
     self.client_id = client_id
     self.client_secret = client_secret
@@ -40,26 +41,6 @@ class Api(object):
   def GetBrewery(self, brewery_id):
     feed_url = '/brewery/info/%s' % brewery_id
     return Brewery(self.__call(feed_url)['response']['brewery'])
-
-  def GetUserFeed(self, username):
-    feed_url = '/user/checkins/%s' % username
-    return self.__call(feed_url)['response']['checkins']['items']
-  
-  def GetUserBadges(self, username):
-    feed_url = '/user/badges/%s' % username
-    return self.__call(feed_url)['response']
-
-  def GetUserFriends(self, username):
-	feed_url = '/user/friends/%s' % username
-	return self.__call(feed_url)['response']
-	
-  def GetUserWishList(self, username):
-	feed_url = '/user/wishlist/%s' % username
-	return self.__call(feed_url)['response']
-    
-  def GetUserDistinctBeers(self, username):
-    feed_url = '/user/beers/%s' % username
-    return self.__call(feed_url)['response']
     
   def GetPubFeed(self, pub):
     feed_url = 'pub'
