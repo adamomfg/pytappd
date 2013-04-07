@@ -7,7 +7,7 @@ class User(object):
                url=None, checkins=None, settings=None, media=None, contact=None,
                date_joined=None, location=None, account_type=None,
                is_supporter=None, recent_brews=None, user_name=None, id=None,
-               is_private=None, stats=None, badges=None):
+               is_private=None, stats=None, badges=None, friends=None):
   
     self.api = untappd.Api()
     
@@ -27,3 +27,10 @@ class User(object):
 
   def GetUserFriends(self, username):
     call = '/user/friends/%s' % username
+    response_dict = untappd.Api.Call(self.api, call, self.api.key)
+    self.friends = response_dict['items']
+    
+  def GetUserFriends(self, username):
+    call = '/user/wishlist/%s' % username
+    response_dict = untappd.Api.Call(self.api, call, self.api.key)
+    self.friends = response_dict['items']
