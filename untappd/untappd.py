@@ -12,23 +12,22 @@ class APIKeyException(Exception):
 
 class Api(object):
 
-  def __init__(self, client_id=None,
-               client_secret=None):
+  def __init__(self, payload=None):
+  
+    key = {}
+    
+    self.payload = key
 
-    self.client_id = client_id
-    self.client_secret = client_secret
-    self.method = '/get'
+  def _AddParams(self, params=None):
+    if params:
+      for k, v in params.iteritems():
+        self.payload[k] = v
 
-    if self.client_id is None:
-      raise APIKeyException('Client ID is required.')
-    if self.client_secret is None:
-      raise APIKeyException('Client secret is required.')
-
-    self.key = '?client_id=%s&client_secret=%s' % (
-              self.client_id, self.client_secret)
-
-  def Call(self, call, key):
-    return requests.get(UNTAPPD_ENDPOINT + call + self.key).json()
+  def Call(self, call, payload, params=None):
+    self._AddParams(params)        
+    r = requests.get(UNTAPPD_ENDPOINT + call, params=self.payload)
+    print r.url
+    return r.json()
 
   def SearchBeers(self, query):
     """/search/beer"""
