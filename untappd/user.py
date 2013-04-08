@@ -26,27 +26,27 @@ class User(object):
     for k, v in response_dict['response']['user'].iteritems():
       setattr(self, k, v)
 
-  def GetUserBadges(self, username):
+  def GetUserBadges(self, username, params=None):
     call = '/user/badges/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     self.badges = response_dict['response']['items']
 
-  def GetUserFriends(self, username):
+  def GetUserFriends(self, username, params=None):
     call = '/user/friends/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     self.friends = response_dict['response']['items']
     
-  def GetUserFriends(self, username):
+  def GetUserFriends(self, username, params=None):
     call = '/user/wishlist/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     self.friends = response_dict['response']['items']
     
-  def GetDistinctBeers(self, username):
+  def GetDistinctBeers(self, username, params=None):
     call = '/user/beers/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     self.distinct = response_dict['response']['items']
 
-  def GetUserFeed(self, username):
+  def GetUserFeed(self, username, params=None):
     call = '/user/checkins/%s' % username
-    response_dict = untappd.Api.Call(self.api, call, self.api.payload)
+    response_dict = untappd.Api.Call(self.api, call, self.api.payload, params)
     self.feed = response_dict['response']['checkins']['items']
