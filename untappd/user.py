@@ -49,5 +49,4 @@ class User(object):
   def GetUserFeed(self, username):
     call = '/user/checkins/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
-    # print response_dict
     self.feed = response_dict['response']['checkins']['items']
