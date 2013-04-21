@@ -7,12 +7,12 @@ class Beer(object):
 
     self.api = untappd.Api()
 
-      if self.api is None:
-        raise Exception('untappd.api is required.')
+    if self.api is None:
+      raise Exception('untappd.api is required.')
         
-  def GetBeerInfo(self.api, beer):
+  def GetBeerInfo(self, beer):
     """Pass the beer id."""
     pass
     
-  def BeerSearch(self.api,  beer):
+  def BeerSearch(self, beer):
     pass
