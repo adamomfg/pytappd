@@ -16,9 +16,11 @@ class Beer(object):
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     return response_dict
   
-  def GetBeerInfo(self, beer):
+  def GetBeerInfo(self, beer_id):
     """Pass the beer id."""
-    pass
+    call = '/beer/info/%s' % beer_id
+    response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     
-  def BeerSearch(self, beer):
-    pass
+  def BeerFeed(self, beer):
+    call = '/beer/checkins/%s' % beer_id
+    response_dict = untappd.Api.Call(self.api, call, self.api.payload)
