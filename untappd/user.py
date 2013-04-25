@@ -53,4 +53,4 @@ class User(object):
     
   def GetUserFullFeed(self, username, params=None):
     call = '/user/checkins/%s' % username
-    
+    #TODO(adamomfg): iterate over feed query until nothing is returned.
