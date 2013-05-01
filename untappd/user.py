@@ -45,7 +45,6 @@ class User(object):
     call = '/user/beers/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
     self.distinct = response_dict['response']['items']
-    #TODO(adamomfg): iterate over distinct beers query until nothing is returned
 
   def GetUserFeed(self, username, params=None):
     call = '/user/checkins/%s' % username
