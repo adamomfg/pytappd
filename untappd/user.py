@@ -50,8 +50,4 @@ class User(object):
   def GetUserFeed(self, username, params=None):
     call = '/user/checkins/%s' % username
     response_dict = untappd.Api.Call(self.api, call, self.api.payload, params)
-    self.feed = response_dict['response']['checkins']['items']
-    
-  def GetUserFullFeed(self, username, params=None):
-    call = '/user/checkins/%s' % username
-    #TODO(adamomfg): iterate over feed query until nothing is returned.
+    self.feed = response_dict['response']['beers']
