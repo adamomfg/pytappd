@@ -1,5 +1,6 @@
 import untappd
 
+
 class User(object):
 
   """An Untappd user object.
