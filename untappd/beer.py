@@ -4,8 +4,15 @@ class Beer(object):
 
   def __init__(self, api=None, beer_id=None, name=None, label=None, abv=None, style=None,
                description=None, brewery=None):
+    
+    self.abv = abv
+    self.beer_id = beer_id
+    self.brewery = brewery
+    self.description = description
+    self.label = label
+    self.style = style
 
-    self.api = untappd.Api()
+    self.api = untappd.UntappdApi()
 
     if self.api is None:
       raise Exception('untappd.api is required.')
