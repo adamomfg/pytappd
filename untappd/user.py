@@ -39,11 +39,10 @@ class User(object):
     
     if self.api is None:
       raise Exception('untappd.UntappdApi is required.')
-      
-    if self.user_name is None:
-      raise Exception('An Untappd user_name must be defined.')
 
   def GetUserInfo(self):
+    if self.user_name is None:
+      raise Exception('An Untappd user_name must be defined.')
     call = '/user/info/%s' % self.user_name
     response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
     return response_dict
