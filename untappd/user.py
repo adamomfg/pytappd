@@ -39,6 +39,12 @@ class User(object):
     
     if self.api is None:
       raise Exception('untappd.UntappdApi is required.')
+    
+    if self.user_name is not None:
+      call = '/user/info/%s' % self.user_name
+      response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
+      for key, v in  response_dict['response']['user'].iteritems():
+        setattr(self, key, response_dict['response']['user'][key])
 
   def GetUserInfo(self):
     if self.user_name is None:
@@ -49,22 +55,24 @@ class User(object):
 
   def GetUserBadges(self):
     call = '/user/badges/%s' % self.user_name
-    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
+    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
     self.badges = response_dict['response']['items']
     return self.badges
 
-  def GetUserFriends(self):
+  def GetUserFriends(self, params=None):
     call = '/user/friends/%s' % self.user_name
-    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
+    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
     self.friends = response_dict['response']['items']
     return self.friends
     
-  def GetDistinctBeers(self):
+  def GetDistinctBeers(self, params=None):
     call = '/user/beers/%s' % self.user_name
-    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
-    self.distinct = response_dict['response']['items']
+    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
+    self.distinct_beers = response_dict['response']['beers']
+    return self.distinct_beers
 
-  def GetUserFeed(self):
+  def GetUserFeed(self, params=None):
     call = '/user/checkins/%s' % self.user_name
     response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
     self.feed = response_dict['response']['beers']
+    return self.feed
