@@ -41,19 +41,18 @@ class User(object):
       raise Exception('untappd.UntappdApi is required.')
     
     if self.user_name is not None:
-      call = '/user/info/%s' % self.user_name
-      response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
-      for key, v in  response_dict['response']['user'].iteritems():
-        setattr(self, key, response_dict['response']['user'][key])
+      self.GetUserInfo()
 
   def GetUserInfo(self):
     if self.user_name is None:
       raise Exception('An Untappd user_name must be defined.')
     call = '/user/info/%s' % self.user_name
     response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
+    for key, v in  response_dict['response']['user'].iteritems():
+      setattr(self, key, response_dict['response']['user'][key])
     return response_dict
 
-  def GetUserBadges(self):
+  def GetUserBadges(self, params=None):
     call = '/user/badges/%s' % self.user_name
     response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
     self.badges = response_dict['response']['items']
