@@ -27,3 +27,8 @@ class Brewery(object):
 
     if self.api is None:
       raise Exception('untappd.api is required.')
+      
+    def GetBreweryInfo(self, brewery_id):
+      """Pass the beer id."""
+      call = '/brewery/info/%s' % brewery_id
+      response_dict = untappd.Api.Call(self.api, call, self.api.payload)

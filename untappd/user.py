@@ -1,3 +1,4 @@
+import collections
 import untappd
 
 
@@ -57,6 +58,12 @@ class User(object):
     response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
     self.badges = response_dict['response']['items']
     return self.badges
+    
+  def GetUserCheckins(self, params=None):
+    call = '/user/checkins/%s' % self.user_name
+    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload, params)
+    self.checkins = response_dict['response']['checkins']['items']
+    return self.checkins
 
   def GetUserFriends(self, params=None):
     call = '/user/friends/%s' % self.user_name
