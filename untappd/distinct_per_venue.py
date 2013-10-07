@@ -29,4 +29,4 @@ while True:
   checkins = GetUserCheckins(lush, max_id=marker_checkin)
 
 pony_uniques = set()
-pony_uniques.update([c['beer']['beer_name'] for c in pony_checkins)
+pony_uniques.update([c['beer']['beer_name'] for c in pony_checkins])
