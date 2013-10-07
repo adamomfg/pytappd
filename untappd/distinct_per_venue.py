@@ -15,7 +15,8 @@ checkins = lush.GetUserCheckins({'limit': 50})
 for checkin in checkins:
   if GetPonyCheckins(checkin):
     pony_checkins.append(checkin)
-    
+    continue
+
 marker_checkin = checkins[-1]['checkin_id']
 
 while lush.GetUserCheckins({'limit': 50, 'max_id': marker_checkin}):
@@ -25,6 +26,7 @@ while lush.GetUserCheckins({'limit': 50, 'max_id': marker_checkin}):
       if GetPonyCheckins(checkin):
         pony_checkins.append(checkin)
   marker_checkin = checkins[-1]['checkin_id']
+  continue
   
 pony_uniques = []
 
