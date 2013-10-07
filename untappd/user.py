@@ -36,7 +36,7 @@ class User(object):
     self.user_avatar = user_avatar
     self.user_name = user_name
     
-    self.api = untappd.UntappdApi()
+    self.api = untappd.Api()
     
     if self.api is None:
       raise Exception('untappd.UntappdApi is required.')
@@ -48,8 +48,8 @@ class User(object):
     if self.user_name is None:
       raise Exception('An Untappd user_name must be defined.')
     call = '/user/info/%s' % self.user_name
-    response_dict = untappd.UntappdApi.Call(self.api, call, self.api.payload)
-    for key, v in  response_dict['response']['user'].iteritems():
+    response_dict = untappd.Api.Call(self.api, call, self.api.payload)
+    for key, v in response_dict['response']['user']:
       setattr(self, key, response_dict['response']['user'][key])
     return response_dict
 
