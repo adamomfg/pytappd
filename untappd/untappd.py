@@ -10,10 +10,12 @@ class APIKeyException(Exception):
   pass
 
 
-class UntappdApi(object):
+class Api(object):
 
   def __init__(self, payload=None):
   
+    key = {} # Add your Untappd API client_id and client_secret here.
+
     self.payload = key
 
   def _AddParams(self, params=None):

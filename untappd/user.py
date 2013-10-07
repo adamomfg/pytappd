@@ -49,7 +49,7 @@ class User(object):
       raise Exception('An Untappd user_name must be defined.')
     call = '/user/info/%s' % self.user_name
     response_dict = untappd.Api.Call(self.api, call, self.api.payload)
-    for key, v in response_dict['response']['user']:
+    for key in response_dict['response']['user']:
       setattr(self, key, response_dict['response']['user'][key])
     return response_dict
 
