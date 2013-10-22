@@ -13,7 +13,7 @@ def GetUserCheckins(user_obj, limit=50, max_id=None):
 def IsPonyCheckin(checkin):
   if 'venue' not in checkin:
     return False
-  return checkin['venue'].get('venue_name') == 'The Pony Bar'
+  return checkin['venue'].get('venue_id') == VENUE
 
 
 lush = user.User(user_name='adampsyche')
